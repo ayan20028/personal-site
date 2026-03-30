@@ -18,7 +18,7 @@
 }
 
 .timezone__city--sleeping:hover {
-  opacity: 1;
+  opacity: 0.6;
 }
 
 .timezone__name {
@@ -36,6 +36,24 @@
   font-weight: 300;
   color: var(--color-muted);
   font-variant-numeric: tabular-nums;
+}
+
+.timezone__colon {
+  animation: colon-pulse 1s step-end infinite;
+}
+
+@keyframes colon-pulse {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0.3; }
+}
+
+.timezone__sleeping {
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  font-weight: 300;
+  color: var(--color-muted);
+  opacity: 0.6;
+  letter-spacing: var(--tracking-wide);
 }
 
 .timezone__date {

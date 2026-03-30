@@ -1,20 +1,43 @@
 .project-card {
+  position: relative;
   display: flex;
   align-items: flex-start;
   gap: var(--space-md);
   padding: var(--space-md);
+  background: color-mix(in srgb, var(--color-surface) 40%, transparent);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
+  overflow: hidden;
   transition:
-    background-color var(--duration-medium),
-    border-color var(--duration-medium),
-    transform var(--duration-medium) var(--ease-out-expo);
+    background-color 0.25s var(--ease-out-quart),
+    border-color 0.35s var(--ease-out-quart),
+    transform 0.4s var(--ease-out-expo),
+    box-shadow 0.4s var(--ease-out-expo);
+}
+
+.project-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--color-text);
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 0.35s var(--ease-out-quart);
 }
 
 .project-card:hover {
   background: var(--color-surface);
   border-color: var(--color-muted);
   transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(28, 27, 26, 0.08);
+}
+
+.project-card:hover::before {
+  transform: scaleY(1);
+  transform-origin: top;
 }
 
 .project-card__title {

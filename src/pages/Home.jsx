@@ -3,11 +3,11 @@ import TimeZoneDisplay from '../components/TimeZoneDisplay'
 import SocialLinks from '../components/SocialLinks'
 import ProjectCard from '../components/ProjectCard'
 import { caseStudies } from '../data/caseStudies'
-import { vaultItems } from '../data/vaultItems'
+import useScrollReveal from '../hooks/useScrollReveal'
 import './Home.css'
 
 function Home() {
-  const pinnedWork = vaultItems.filter((item) => item.pinned)
+  useScrollReveal()
 
   return (
     <div className="home">
@@ -35,8 +35,8 @@ function Home() {
       </section>
 
       {/* ── About ── */}
-      <section className="section">
-        <h2 className="section__label">About</h2>
+      <section className="section" data-reveal>
+        <h2 className="section__label">01 / About</h2>
         <div className="section__content">
           <p>
             I sit at the intersection of tech, design, and business. At Wells Fargo,
@@ -54,8 +54,8 @@ function Home() {
       </section>
 
       {/* ── Work ── */}
-      <section className="section">
-        <h2 className="section__label">Work</h2>
+      <section className="section" data-reveal>
+        <h2 className="section__label">02 / Work</h2>
         <div className="section__content">
           <div className="work-cards">
             {caseStudies.map((study) => (
@@ -71,8 +71,8 @@ function Home() {
       </section>
 
       {/* ── Currently ── */}
-      <section className="section">
-        <h2 className="section__label">Currently</h2>
+      <section className="section" data-reveal>
+        <h2 className="section__label">03 / Currently</h2>
         <div className="section__content">
           <div className="work-cards">
             <a
@@ -100,6 +100,34 @@ function Home() {
                 </h3>
                 <p className="link-card__desc">A newsletter exploring the human experience across domains.</p>
               </div>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Say Hello ── */}
+      <section className="section" data-reveal>
+        <h2 className="section__label">04 / Say Hello</h2>
+        <div className="section__content">
+          <p>
+            Always open to interesting conversations — whether it's about
+            a project, a collaboration, or just a shared curiosity.
+          </p>
+          <div className="contact-actions">
+            <a href="mailto:ayan@akashilabs.com" className="contact-link">
+              <span className="contact-link__label">Email</span>
+              <span className="contact-link__value">ayan@akashilabs.com</span>
+            </a>
+            <a
+              href="https://cal.com/ayan-morshed/personal"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="contact-link"
+            >
+              <span className="contact-link__label">Book a call</span>
+              <span className="contact-link__value">
+                cal.com/ayan-morshed <span aria-hidden="true">&#8599;</span>
+              </span>
             </a>
           </div>
         </div>

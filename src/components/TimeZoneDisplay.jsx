@@ -7,14 +7,15 @@ const cities = [
   { name: 'Charlotte', timezone: 'America/New_York' },
 ]
 
-function formatTime(timezone) {
-  return new Intl.DateTimeFormat('en-US', {
+function formatTimeParts(timezone) {
+  const parts = new Intl.DateTimeFormat('en-US', {
     hour: '2-digit',
     minute: '2-digit',
     second: '2-digit',
     hour12: false,
     timeZone: timezone,
   }).format(new Date())
+  return parts.split(':')
 }
 
 function formatDate(timezone) {
@@ -46,7 +47,7 @@ function TimeZoneDisplay() {
   const [times, setTimes] = useState(() =>
     cities.map((c) => ({
       ...c,
-      time: formatTime(c.timezone),
+      parts: formatTimeParts(c.timezone),
       date: formatDate(c.timezone),
       sleeping: isSleeping(c.timezone),
     }))
@@ -58,7 +59,7 @@ function TimeZoneDisplay() {
       setTimes(
         cities.map((c) => ({
           ...c,
-          time: formatTime(c.timezone),
+          parts: formatTimeParts(c.timezone),
           date: formatDate(c.timezone),
           sleeping: isSleeping(c.timezone),
         }))
@@ -77,12 +78,25 @@ function TimeZoneDisplay() {
           onMouseLeave={() => setHoveredCity(null)}
         >
           <span className="timezone__name">{city.name}</span>
-          <span className="timezone__time">{city.time}</span>
-          <span
-            className={`timezone__date ${hoveredCity === city.name ? 'timezone__date--visible' : ''}`}
-          >
-            {city.sleeping && hoveredCity === city.name ? 'sleeping' : city.date}
+          <span className="timezone__time">
+            {city.parts.map((segment, i) => (
+              <span key={i}>
+                {segment}
+                {i < city.parts.length - 1 && (
+                  <span className="timezone__colon">:</span>
+                )}
+              </span>
+            ))}
           </span>
+          {city.sleeping ? (
+            <span className="timezone__sleeping">sleeping</span>
+          ) : (
+            <span
+              className={`timezone__date ${hoveredCity === city.name ? 'timezone__date--visible' : ''}`}
+            >
+              {city.date}
+            </span>
+          )}
         </div>
       ))}
     </div>

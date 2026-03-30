@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
 import './NameCycler.css'
 
 const names = [
@@ -9,35 +9,36 @@ const names = [
 
 function NameCycler() {
   const [currentIndex, setCurrentIndex] = useState(0)
-  const [phase, setPhase] = useState('visible') // 'visible' | 'fading-out' | 'fading-in'
+  const [phase, setPhase] = useState('visible')
   const timeoutRef = useRef(null)
 
-  useEffect(() => {
-    const cycle = () => {
-      // Start fading out
-      setPhase('fading-out')
+  const cycle = useCallback(() => {
+    // Fade out (slide up)
+    setPhase('fading-out')
 
-      timeoutRef.current = setTimeout(() => {
-        // Switch to next name
-        setCurrentIndex((prev) => (prev + 1) % names.length)
-        setPhase('fading-in')
+    timeoutRef.current = setTimeout(() => {
+      // Switch name, set to fading-in start state
+      setCurrentIndex((prev) => (prev + 1) % names.length)
+      setPhase('fading-in')
 
-        timeoutRef.current = setTimeout(() => {
+      // Double rAF so browser registers the start state before transitioning
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
           setPhase('visible')
 
-          // Wait before cycling again
-          timeoutRef.current = setTimeout(cycle, 3000)
-        }, 600)
-      }, 600)
-    }
+          // Wait, then cycle again
+          timeoutRef.current = setTimeout(cycle, 2800)
+        })
+      })
+    }, 500)
+  }, [])
 
-    // Initial hold before first cycle
-    timeoutRef.current = setTimeout(cycle, 3000)
-
+  useEffect(() => {
+    timeoutRef.current = setTimeout(cycle, 2800)
     return () => {
       if (timeoutRef.current) clearTimeout(timeoutRef.current)
     }
-  }, [])
+  }, [cycle])
 
   return (
     <div className="name-cycler" aria-label="Ayan Morshed">

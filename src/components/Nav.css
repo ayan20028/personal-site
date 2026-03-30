@@ -11,15 +11,18 @@
   opacity: 0;
   transform: translateY(-8px);
   pointer-events: none;
+  border-bottom: 1px solid transparent;
   transition:
     opacity var(--duration-slow) var(--ease-out-expo),
-    transform var(--duration-slow) var(--ease-out-expo);
+    transform var(--duration-slow) var(--ease-out-expo),
+    border-color 0.4s var(--ease-out-quart) 0.3s;
 }
 
 .nav--visible {
   opacity: 1;
   transform: translateY(0);
   pointer-events: auto;
+  border-bottom-color: var(--color-border);
 }
 
 .nav__inner {
@@ -27,7 +30,7 @@
   align-items: center;
   justify-content: space-between;
   height: var(--nav-height);
-  max-width: var(--content-max);
+  max-width: 720px;
   margin: 0 auto;
 }
 
