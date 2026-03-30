@@ -1,0 +1,125 @@
+.lab {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: var(--space-2xl) var(--page-padding) var(--space-xl);
+}
+
+/* Header */
+.lab__header {
+  margin-bottom: var(--space-lg);
+}
+
+.lab__title {
+  font-family: var(--font-body);
+  font-size: var(--text-4xl);
+  font-weight: 600;
+  letter-spacing: var(--tracking-tight);
+  margin-bottom: var(--space-xs);
+}
+
+.lab__desc {
+  font-size: var(--text-sm);
+  color: var(--color-muted);
+  line-height: var(--leading-normal);
+  max-width: 480px;
+}
+
+/* Filters */
+.lab__filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: var(--space-md);
+}
+
+.lab__filter {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: 400;
+  padding: 6px 16px;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--color-muted);
+  cursor: pointer;
+  transition:
+    border-color var(--duration-fast),
+    color var(--duration-fast);
+}
+
+.lab__filter:hover {
+  border-color: var(--color-muted);
+  color: var(--color-text);
+}
+
+.lab__filter--active {
+  border-color: var(--color-text);
+  color: var(--color-text);
+}
+
+/* Divider */
+.lab__divider {
+  height: 1px;
+  background: var(--color-border);
+  margin-bottom: 0;
+}
+
+/* List */
+.lab__list {
+  display: flex;
+  flex-direction: column;
+}
+
+.lab__row {
+  display: grid;
+  grid-template-columns: 1fr auto auto auto;
+  align-items: center;
+  gap: var(--space-md);
+  padding: 20px 0;
+  border-bottom: 1px solid var(--color-border);
+  transition:
+    transform var(--duration-medium) var(--ease-out-expo),
+    background-color var(--duration-fast);
+}
+
+.lab__row:hover {
+  transform: translateX(8px);
+}
+
+.lab__row-title {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.lab__row-category {
+  font-size: var(--text-sm);
+  color: var(--color-muted);
+}
+
+.lab__row-arrow {
+  font-size: var(--text-sm);
+  color: var(--color-muted);
+  transition: transform var(--duration-fast);
+}
+
+.lab__row:hover .lab__row-arrow {
+  transform: translateX(4px);
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .lab__row {
+    grid-template-columns: 1fr auto;
+    gap: 8px;
+  }
+
+  .lab__row-category {
+    display: none;
+  }
+
+  .lab__row-arrow {
+    display: none;
+  }
+}

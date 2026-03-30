@@ -60,5 +60,6 @@
   /* ── Misc ── */
   --radius-sm: 4px;
   --radius-md: 10px;
+  --radius-pill: 999px;
   --nav-height: 4rem;
 }

@@ -42,12 +42,12 @@ function NameCycler() {
 
   return (
     <div className="name-cycler" aria-label="Ayan Morshed">
-      <h1
+      <div
         className={`name-cycler__text name-cycler__text--${phase}`}
         aria-hidden="true"
       >
         {names[currentIndex]}
-      </h1>
+      </div>
     </div>
   )
 }

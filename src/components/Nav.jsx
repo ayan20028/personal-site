@@ -36,8 +36,9 @@ function Nav() {
 
         <nav className="nav__links" aria-label="Main navigation">
           <Link
-            to="/vault"
-            className={`nav__link ${location.pathname === '/vault' ? 'nav__link--active' : ''}`}
+            to="/lab"
+            className={`nav__link ${location.pathname.startsWith('/lab') ? 'nav__link--active' : ''}`}
+            aria-current={location.pathname.startsWith('/lab') ? 'page' : undefined}
           >
             Work
           </Link>
@@ -64,7 +65,7 @@ function Nav() {
 
       {menuOpen && (
         <div className="nav__mobile-menu">
-          <Link to="/vault" className="nav__mobile-link">Work</Link>
+          <Link to="/lab" className="nav__mobile-link">Work</Link>
           <a
             href="https://ayanmorshed.substack.com"
             target="_blank"

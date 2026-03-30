@@ -2,7 +2,7 @@ import NameCycler from '../components/NameCycler'
 import TimeZoneDisplay from '../components/TimeZoneDisplay'
 import SocialLinks from '../components/SocialLinks'
 import ProjectCard from '../components/ProjectCard'
-import { caseStudies } from '../data/caseStudies'
+import { projects } from '../data/projects'
 import useScrollReveal from '../hooks/useScrollReveal'
 import './Home.css'
 
@@ -23,6 +23,7 @@ function Home() {
           height="80"
         />
 
+        <h1 className="sr-only">Ayan Morshed</h1>
         <NameCycler />
 
         <p className="hero__tagline">
@@ -55,14 +56,16 @@ function Home() {
         <h2 className="section__label">02 / Work</h2>
         <div className="section__content">
           <div className="work-cards">
-            {caseStudies.map((study) => (
-              <ProjectCard
-                key={study.slug}
-                slug={study.slug}
-                title={study.title}
-                subtitle={study.subtitle}
-              />
-            ))}
+            {projects
+              .filter((p) => p.featured)
+              .map((project) => (
+                <ProjectCard
+                  key={project.slug}
+                  slug={project.slug}
+                  title={project.title}
+                  subtitle={project.subtitle || project.description}
+                />
+              ))}
           </div>
         </div>
       </section>
