@@ -1,0 +1,138 @@
+/* ── Home Container ── */
+
+.home {
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 0 var(--page-padding);
+}
+
+/* ── Hero ── */
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 60px 0 48px;
+  gap: var(--space-md);
+}
+
+.hero__photo {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid var(--color-border);
+}
+
+.hero__tagline {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  color: var(--color-muted);
+  line-height: var(--leading-snug);
+  max-width: 380px;
+}
+
+/* ── Sections (left-label pattern) ── */
+
+.section {
+  position: relative;
+  padding: 48px 0;
+}
+
+.section__label {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: 400;
+  color: var(--color-muted);
+  margin-bottom: var(--space-md);
+}
+
+.section__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.section__content p {
+  font-size: var(--text-sm);
+  color: var(--color-muted);
+  line-height: var(--leading-normal);
+}
+
+.section__content p strong {
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+/* ── Work Cards (stacked) ── */
+
+.work-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* ── Link Cards (Currently section) ── */
+
+.link-card {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-md);
+  padding: var(--space-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  transition:
+    background-color var(--duration-medium),
+    border-color var(--duration-medium),
+    transform var(--duration-medium) var(--ease-out-expo);
+}
+
+.link-card:hover {
+  background: var(--color-surface);
+  border-color: var(--color-muted);
+  transform: translateY(-2px);
+}
+
+.link-card__title {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--color-text);
+  margin-bottom: 4px;
+}
+
+.link-card__arrow {
+  display: inline-block;
+  transition: transform var(--duration-fast);
+  color: var(--color-muted);
+}
+
+.link-card:hover .link-card__arrow {
+  transform: translate(1px, -1px);
+  color: var(--color-text);
+}
+
+.link-card__desc {
+  font-size: var(--text-sm);
+  color: var(--color-muted);
+  line-height: var(--leading-snug);
+}
+
+/* ── Desktop: left-offset labels ── */
+
+@media (min-width: 810px) {
+  .home {
+    max-width: 640px;
+  }
+
+  .section {
+    padding-left: 100px;
+  }
+
+  .section__label {
+    position: absolute;
+    left: 0;
+    top: 52px;
+  }
+}

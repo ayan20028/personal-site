@@ -1,0 +1,32 @@
+.project-card {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-md);
+  padding: var(--space-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  transition:
+    background-color var(--duration-medium),
+    border-color var(--duration-medium),
+    transform var(--duration-medium) var(--ease-out-expo);
+}
+
+.project-card:hover {
+  background: var(--color-surface);
+  border-color: var(--color-muted);
+  transform: translateY(-2px);
+}
+
+.project-card__title {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--color-text);
+  margin-bottom: 4px;
+}
+
+.project-card__subtitle {
+  font-size: var(--text-sm);
+  color: var(--color-muted);
+  line-height: var(--leading-snug);
+}

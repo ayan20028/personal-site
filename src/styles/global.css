@@ -1,0 +1,98 @@
+/* ── Font Faces ── */
+
+@font-face {
+  font-family: 'Inter';
+  src: url('/fonts/Inter-Variable.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'DM Mono';
+  src: url('/fonts/DMMono-Light.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'DM Mono';
+  src: url('/fonts/DMMono-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ── Base Styles ── */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  font-weight: 400;
+  line-height: var(--leading-normal);
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Typography Defaults ── */
+
+h1, h2, h3 {
+  font-family: var(--font-body);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+}
+
+/* ── Selection ── */
+
+::selection {
+  background-color: var(--color-text);
+  color: var(--color-bg);
+}
+
+/* ── Focus ── */
+
+:focus-visible {
+  outline: 2px solid var(--color-text);
+  outline-offset: 4px;
+}
+
+/* ── Skip Link ── */
+
+.skip-link {
+  position: fixed;
+  top: var(--space-sm);
+  left: var(--space-sm);
+  z-index: 1000;
+  padding: var(--space-xs) var(--space-sm);
+  background: var(--color-text);
+  color: var(--color-bg);
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  border-radius: var(--radius-sm);
+  transform: translateY(-200%);
+  transition: transform var(--duration-medium) var(--ease-out-expo);
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+/* ── Reduced Motion ── */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

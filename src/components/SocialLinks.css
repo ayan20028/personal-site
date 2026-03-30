@@ -1,0 +1,19 @@
+.socials {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-md);
+}
+
+.socials__link {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  font-weight: 300;
+  color: var(--color-muted);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  transition: color var(--duration-fast);
+}
+
+.socials__link:hover {
+  color: var(--color-text);
+}

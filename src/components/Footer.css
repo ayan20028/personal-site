@@ -1,0 +1,10 @@
+.footer {
+  padding: var(--space-lg) var(--page-padding);
+  margin-top: var(--space-xl);
+  text-align: center;
+}
+
+.footer__text {
+  font-size: var(--text-xs);
+  color: var(--color-muted);
+}
