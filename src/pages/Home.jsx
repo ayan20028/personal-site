@@ -39,16 +39,13 @@ function Home() {
         <h2 className="section__label">01 / About</h2>
         <div className="section__content">
           <p>
-            I sit at the intersection of tech, design, and business. At Wells Fargo,
-            I design automation systems and dashboards that make enterprise processes
-            feel human. On the side, I run <strong>Akashi Labs</strong> — an AI
-            automation consultancy helping businesses work smarter.
+            I'm an American-Bengali strategist &amp; builder raised in Tokyo.
+            I'm drawn to interdisciplinary thinking, connecting insights from
+            cognitive science, economics, design, and technology.
           </p>
           <p>
-            I think a lot about what makes experiences feel right — whether that's a
-            workflow, an interface, or the way a message lands. I speak English,
-            Japanese, and Bengali, and that shapes how I see problems: there's always
-            more than one way to read the room.
+            At Wells Fargo, I design automation systems and operational workflows.
+            On the side, I run <strong>Akashi Labs</strong> — an AI automation consultancy.
           </p>
         </div>
       </section>

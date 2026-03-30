@@ -4,7 +4,7 @@ import './NameCycler.css'
 const names = [
   'Ayan Morshed',
   'アヤン・モルシェド',
-  'আয়ান মর্শেদ',
+  'আয়ান মোর্শেদ',
 ]
 
 function NameCycler() {

@@ -52,8 +52,8 @@ h1, h2, h3 {
 /* ── Selection ── */
 
 ::selection {
-  background-color: var(--color-text);
-  color: var(--color-bg);
+  background-color: rgba(28, 27, 26, 0.12);
+  color: inherit;
 }
 
 /* ── Focus ── */
