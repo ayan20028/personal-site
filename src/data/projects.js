@@ -19,7 +19,7 @@ export const projects = [
     sections: [
       {
         heading: 'Problem',
-        body: 'The team managed staffing intake through Excel forms passed around by email. Every request meant back-and-forth threads, manual data transfers, and frequent errors. Managers had zero visibility into their own submissions, so they\u2019d ping the team constantly asking for status updates.\n\nThe team had become the bottleneck in its own process. And nobody had asked for a better system \u2014 everyone had accepted the friction as just how things work.',
+        body: 'The team managed staffing intake for a division of roughly 2,000 employees through Excel forms passed around by email. Every request meant back-and-forth threads, manual data transfers, and frequent errors. Managers had zero visibility into their own submissions, so they\u2019d ping the team constantly asking for status updates.\n\nThe team had become the bottleneck in its own process. And nobody had asked for a better system \u2014 everyone had accepted the friction as just how things work.',
       },
       {
         heading: 'What I Built',
