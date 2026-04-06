@@ -1,8 +1,5 @@
 export const STATUS_CONFIG = {
   shipped: { label: 'Shipped', color: '#3D6B3D' },
-  poc: { label: 'Proof of concept', color: '#7C6E54' },
-  creative: { label: 'Creative', color: '#6B5B7B' },
-  shelved: { label: 'Shelved', color: '#8C8A87' },
 }
 
 export const projects = [
@@ -13,182 +10,40 @@ export const projects = [
     status: 'shipped',
     featured: true,
     description:
-      'An internal tool built on Microsoft\u2019s Power Platform that centralizes workforce planning and management for the IT&V Planning & Governance team at Wells Fargo. Replaced manual, scattered processes with a single integrated system.',
-    tools: ['SharePoint', 'PowerApps', 'Power Automate'],
+      'Replaced email-based staffing intake for an enterprise division at a Fortune 50 bank with a portal housing three purpose-built forms, automated approval workflows, and real-time status tracking. Adopted by 200+ managers and directors.',
+    tools: ['SharePoint', 'PowerApps', 'Power Automate', 'Microsoft Teams'],
     subtitle:
-      'Centralizing workforce operations for an enterprise team.',
-    timeline: '2024',
-    role: 'Senior Consultant',
+      'A staffing intake portal that replaced scattered email workflows with structured forms, automated approvals, and real-time tracking for 200+ managers at a Fortune 50 bank.',
+    timeline: '2025',
+    role: 'Senior Consultant \u2014 Solo designer & builder',
     sections: [
       {
         heading: 'Problem',
-        body: 'The team was managing workforce data across scattered spreadsheets and disconnected manual processes. There was no single source of truth \u2014 information lived in different places, was hard to keep current, and created friction for anyone trying to get a clear picture of workforce status.',
+        body: 'The IT&V Planning & Governance team managed staffing intake through Excel forms passed around by email. Every request meant back-and-forth threads, manual data transfers, and frequent errors. Managers had zero visibility into their own submissions, so they\u2019d ping the team constantly asking for status updates.\n\nThe team had become the bottleneck in its own process. And nobody had asked for a better system \u2014 everyone had accepted the friction as just how things work.',
       },
       {
-        heading: 'Approach',
-        body: 'Built a centralized portal using SharePoint for data storage and access, PowerApps for the user-facing interface, and Power Automate for automating workflows like notifications and approvals. Designed it to fit into existing team habits so adoption would be natural rather than forced.',
+        heading: 'What I Built',
+        body: 'Three intake forms, each built for a different request type:\n\nStaffing Intake handles hiring and headcount \u2014 the highest-stakes of the three. I built an automated approval workflow where the Chief of Staff gets a Teams notification with all relevant details and action buttons to approve or reject inline. No digging into the system required.\n\nOffboarding processes departures and tracks contractor end-dates, with automated alerts so the team is never caught off guard by upcoming expirations.\n\nBusiness Strategy handles ad hoc requests with dynamic routing \u2014 depending on which type the requester selects, the system sends it to the right person automatically.',
       },
       {
-        heading: 'Result',
-        body: 'Broadly adopted across the department \u2014 became the go-to tool for day-to-day workforce operations. Replaced manual, scattered processes with a single integrated system.',
-      },
-    ],
-    reflection: null,
-    image: null,
-    imageCaption: null,
-  },
-  {
-    slug: 'vba-org-chart-automation',
-    title: 'VBA Org Chart Automation',
-    category: 'Process design',
-    status: 'shipped',
-    featured: false,
-    description:
-      'A VBA script that automatically generates organizational charts, replacing what was previously a tedious manual process. Broadly adopted within the department at Wells Fargo.',
-    tools: ['VBA', 'Excel', 'Visio'],
-    subtitle:
-      'Eliminating a recurring manual task with one button click.',
-    timeline: '2023',
-    role: 'Senior Consultant',
-    sections: [
-      {
-        heading: 'Problem',
-        body: 'Creating and updating org charts by hand was time-consuming and error-prone. Every time team structures changed \u2014 which happened often \u2014 someone had to manually rebuild the chart. A low-value task that ate up real time.',
+        heading: 'Design Thinking',
+        body: 'Every form uses conditional fields \u2014 users only see what\u2019s relevant to their request, not a giant catch-all form. Fewer fields means fewer errors.\n\nBehind the scenes, Power Automate handles notifications at each step. The team never manually checks for new submissions, and requesters can track their own status in real time.\n\nI learned SharePoint, PowerApps, and Power Automate from scratch while building this. I chose them because they were already approved inside the bank\u2019s enterprise environment \u2014 no new licensing, no IT approvals, no dependency on another team to get started.',
       },
       {
-        heading: 'Approach',
-        body: 'Wrote a VBA script that pulls employee and team data and programmatically generates formatted org charts. The script handles layout, hierarchy, and formatting automatically \u2014 what used to take significant manual effort now runs with a button click.',
+        heading: 'Adoption',
+        body: 'Building the tool was half the work. Getting people to use it was the other half.\n\nI presented the system to senior leaders, managers, and their delegates across the division \u2014 people who had been doing things the old way for years. That meant explaining not just how it works, but why the old process was costing them time they didn\u2019t realize they were losing. Change management, not a product demo.',
       },
       {
         heading: 'Result',
-        body: 'Broadly adopted within the department at Wells Fargo. Eliminated a recurring manual task and ensured org charts stayed accurate as teams changed.',
+        body: 'The portal is now the standard intake process for the division. Over 200 managers and directors use it across the organization.\n\nStatus check-ins to the team dropped significantly. The Chief of Staff\u2019s approval flow went from email chains to a single button press in Teams. And the team recovered hours each week that had been going to manual routing and data entry.',
       },
     ],
-    reflection: null,
-    image: null,
-    imageCaption: null,
-  },
-  {
-    slug: 'momentum',
-    title: 'Momentum',
-    category: 'Personal tool',
-    status: 'shipped',
-    featured: true,
-    description:
-      'A habit tracker built around friction, not features. Tracks 11 researched daily habits with custom inputs and a correlation engine.',
-    tools: ['React 19', 'Supabase', 'Vite', 'PWA'],
-    subtitle:
-      'A habit tracker built around friction, not features.',
-    timeline: '5 days',
-    role: 'Solo builder',
-    sections: [
-      {
-        heading: 'Problem',
-        body: "Existing habit trackers split into two extremes: gamified apps optimizing for engagement, and minimal checklists that don't analyze the data. Both added friction that made consistent daily tracking unsustainable. I wanted to track specific high-leverage habits and surface patterns I couldn't see on my own.",
-      },
-      {
-        heading: 'Approach',
-        body: 'Researched which habits have the highest leverage, then hardcoded 11 matched to my routine. Started with a Claude artifact that was roughly 80% functional, took it to Claude Code, and shipped a working PWA on day one. Designed five custom input types per habit instead of building a generic form builder. Built a correlation engine requiring 14 days of data before generating insights.',
-      },
-      {
-        heading: 'Result',
-        body: '22 commits. Four views covering different interaction speeds: a 90-second guided flow, a 30-second quick grid, and weekly and monthly dashboards. Insights engine analyzes 9 correlation dimensions. Installable as PWA on iOS and Android. Entire codebase under 2,000 lines. Friends created their own accounts on the same instance \u2014 row-level security means each user only sees their own data.',
-      },
-    ],
-    reflection:
-      'Add a design token system from the start \u2014 a palette overhaul required touching dozens of hardcoded values. Build an offline write queue for true PWA resilience. Add tests for the 407-line insights engine.',
-    image: null,
-    imageCaption: 'Screenshot of the app \u2014 progress ring + dashboard',
-  },
-  {
-    slug: 'prospect-engine',
-    title: 'Prospect Engine',
-    category: 'AI automation',
-    status: 'poc',
-    featured: true,
-    description:
-      'An automated pipeline that researches and surfaces new business prospects daily, delivering results to Notion and Slack. Designed to run in the background while working a full-time job \u2014 consistent outreach without manual research time.',
-    tools: ['SerpAPI', 'Claude API', 'Notion', 'Slack'],
-  },
-  {
-    slug: 'lead-enrichment-system',
-    title: 'Lead Enrichment System',
-    category: 'AI automation',
-    status: 'poc',
-    featured: false,
-    description:
-      'Takes a basic lead \u2014 a company name \u2014 and automatically enriches it with relevant business details: industry, size, contact info, pain points. Turns a raw lead list into sales-ready intelligence in minutes instead of hours.',
-    tools: ['Claude API', 'Make.com'],
-  },
-  {
-    slug: 'ai-proposal-generator',
-    title: 'AI Proposal Generator',
-    category: 'AI automation',
-    status: 'poc',
-    featured: false,
-    description:
-      'Automatically generates customized business proposals based on prospect information and service offerings. Takes prospect context \u2014 industry, pain points, company details \u2014 and produces a structured, tailored proposal draft. Reduces proposal drafting from hours to minutes while maintaining a customized feel.',
-    tools: ['Claude API', 'Make.com'],
-  },
-  {
-    slug: 'gmail-faq-responder',
-    title: 'Gmail FAQ Responder',
-    category: 'AI automation',
-    status: 'shipped',
-    featured: false,
-    description:
-      'An AI-powered email automation built for a real client \u2014 a Portuguese printing company \u2014 that automatically drafts responses to frequently asked customer questions. Monitors incoming Gmail messages, identifies FAQ-type questions using Claude API, and drafts contextually appropriate responses. Responses are drafted, not auto-sent, so the client retains final approval.',
-    tools: ['Gmail API', 'Claude API', 'Make.com'],
-  },
-  {
-    slug: 'google-review-response',
-    title: 'Google Review Response',
-    category: 'AI automation',
-    status: 'poc',
-    featured: false,
-    description:
-      'Automatically generates professional, on-brand responses to Google Reviews. Monitors new reviews, classifies by sentiment, and uses Claude API to generate a response matching the business\u2019s tone. Positive reviews get a genuine thank-you; negative reviews get a professional, empathetic response. All drafted for owner approval before posting.',
-    tools: ['Google Business API', 'Claude API', 'Make.com'],
-  },
-  {
-    slug: 'akashi-labs-ai-architecture',
-    title: 'Akashi Labs AI Architecture',
-    category: 'Systems design',
-    status: 'shelved',
-    featured: false,
-    description:
-      'A 6-agent AI system architecture designed as the operational backbone for Akashi Labs. Each agent handles a distinct function \u2014 from prospecting to delivery \u2014 using interconnected AI agents rather than manual effort. Served as the strategic blueprint for Akashi Labs\u2019 service delivery model.',
-    tools: ['Claude API', 'Make.com', 'tldraw'],
-  },
-  {
-    slug: 'warner-music-japan',
-    title: 'Warner Music Japan',
-    category: 'Creative',
-    status: 'creative',
-    featured: false,
-    description:
-      'A commercial co-directed for Warner Music Japan that aired on billboards in Tokyo. Part of a filmmaking and photography background developed while growing up in Tokyo \u2014 a major visibility milestone for early creative career.',
-    tools: ['Video production', 'Direction', 'Post-production'],
+    reflection: 'This was the project that taught me the difference between building something that works and building something people actually adopt. The technical build was one challenge. Convincing an entire division to change how they\u2019d been working for years was a different kind of problem entirely.',
+    image: '/images/workforce-portal-diagram.png',
+    imageCaption: 'System architecture — intake forms, approval workflows, and routing logic',
   },
 ]
 
 export function getProject(slug) {
   return projects.find((p) => p.slug === slug)
-}
-
-export function getNextProject(currentSlug) {
-  const index = projects.findIndex((p) => p.slug === currentSlug)
-  return projects[(index + 1) % projects.length]
-}
-
-export function filterProjects(filter) {
-  if (filter === 'all') return projects
-  if (filter === 'shipped')
-    return projects.filter((p) => p.status === 'shipped')
-  if (filter === 'poc') return projects.filter((p) => p.status === 'poc')
-  if (filter === 'creative')
-    return projects.filter((p) => p.status === 'creative')
-  if (filter === 'shelved')
-    return projects.filter((p) => p.status === 'shelved')
-  return projects
 }

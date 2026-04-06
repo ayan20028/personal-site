@@ -4,7 +4,6 @@ import './Nav.css'
 
 function Nav() {
   const [visible, setVisible] = useState(false)
-  const [menuOpen, setMenuOpen] = useState(false)
   const location = useLocation()
   const isHome = location.pathname === '/'
 
@@ -23,10 +22,6 @@ function Nav() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [isHome])
 
-  useEffect(() => {
-    setMenuOpen(false)
-  }, [location])
-
   return (
     <header className={`nav ${visible ? 'nav--visible' : ''}`}>
       <div className="nav__inner">
@@ -35,13 +30,6 @@ function Nav() {
         </Link>
 
         <nav className="nav__links" aria-label="Main navigation">
-          <Link
-            to="/lab"
-            className={`nav__link ${location.pathname.startsWith('/lab') ? 'nav__link--active' : ''}`}
-            aria-current={location.pathname.startsWith('/lab') ? 'page' : undefined}
-          >
-            Work
-          </Link>
           <a
             href="https://ayanmorshed.substack.com"
             target="_blank"
@@ -51,31 +39,17 @@ function Nav() {
             Newsletter
             <span aria-hidden="true"> &#8599;</span>
           </a>
-        </nav>
-
-        <button
-          className="nav__menu-btn"
-          onClick={() => setMenuOpen(!menuOpen)}
-          aria-expanded={menuOpen}
-          aria-label="Toggle menu"
-        >
-          <span className={`nav__hamburger ${menuOpen ? 'nav__hamburger--open' : ''}`} />
-        </button>
-      </div>
-
-      {menuOpen && (
-        <div className="nav__mobile-menu">
-          <Link to="/lab" className="nav__mobile-link">Work</Link>
           <a
-            href="https://ayanmorshed.substack.com"
+            href="https://cal.com/ayan-morshed/personal"
             target="_blank"
             rel="noopener noreferrer"
-            className="nav__mobile-link"
+            className="nav__link nav__link--external"
           >
-            Newsletter <span aria-hidden="true">&#8599;</span>
+            Book a Call
+            <span aria-hidden="true"> &#8599;</span>
           </a>
-        </div>
-      )}
+        </nav>
+      </div>
     </header>
   )
 }

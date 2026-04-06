@@ -44,7 +44,7 @@
   --page-padding: clamp(1.5rem, 4vw, 4rem);
   --content-width: 560px;
   --content-wide: 1000px;
-  --content-max: 640px;
+  --content-max: 800px;
 
   /* ── Easing ── */
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);

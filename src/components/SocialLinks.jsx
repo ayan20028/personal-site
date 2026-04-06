@@ -29,27 +29,39 @@ function InstagramIcon() {
   )
 }
 
+function EmailIcon() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="2" y="4" width="20" height="16" rx="2" />
+      <path d="M22 7l-10 7L2 7" />
+    </svg>
+  )
+}
+
 const links = [
   { label: 'LinkedIn', href: 'https://www.linkedin.com/in/ayan-morshed/', icon: LinkedInIcon },
   { label: 'GitHub', href: 'https://github.com/ayan20028', icon: GitHubIcon },
   { label: 'Instagram', href: 'https://instagram.com/ayanmorshed', icon: InstagramIcon },
+  { label: 'Email', href: 'mailto:ayan@akashilabs.com', icon: EmailIcon },
 ]
 
 function SocialLinks() {
   return (
     <div className="socials">
-      {links.map((link) => (
-        <a
-          key={link.label}
-          href={link.href}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="socials__link"
-          aria-label={link.label}
-        >
-          <link.icon />
-        </a>
-      ))}
+      {links.map((link) => {
+        const isExternal = link.href.startsWith('http')
+        return (
+          <a
+            key={link.label}
+            href={link.href}
+            {...(isExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+            className="socials__link"
+            aria-label={link.label}
+          >
+            <link.icon />
+          </a>
+        )
+      })}
     </div>
   )
 }

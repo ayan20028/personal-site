@@ -1,18 +1,25 @@
 import { useParams, Link } from 'react-router'
-import { getProject, getNextProject } from '../data/projects'
+import { useEffect } from 'react'
+import { getProject } from '../data/projects'
 import StatusTag from '../components/StatusTag'
 import './ProjectDetail.css'
 
 function ProjectDetail() {
   const { slug } = useParams()
   const project = getProject(slug)
-  const next = getNextProject(slug)
+
+  useEffect(() => {
+    if (project) {
+      document.title = `${project.title} — Ayan Morshed`
+    }
+    return () => { document.title = 'Ayan Morshed' }
+  }, [project])
 
   if (!project) {
     return (
       <div className="project-detail project-detail--not-found">
         <h1>Project not found</h1>
-        <Link to="/lab">Back to lab</Link>
+        <Link to="/">Back</Link>
       </div>
     )
   }
@@ -23,8 +30,8 @@ function ProjectDetail() {
     <article className="project-detail">
       {/* Back link */}
       <div className="project-detail__back-wrapper">
-        <Link to="/lab" className="project-detail__back">
-          &larr; Back to lab
+        <Link to="/" className="project-detail__back">
+          &larr; Back
         </Link>
       </div>
 
@@ -70,20 +77,14 @@ function ProjectDetail() {
         )}
       </header>
 
-      {/* Image placeholder (detailed only) */}
-      {isDetailed && (
+      {/* Image (only if one exists) */}
+      {isDetailed && project.image && (
         <div className="project-detail__image-wrapper">
           <div className="project-detail__image">
-            {project.image ? (
-              <img
-                src={project.image}
-                alt={project.imageCaption || project.title}
-              />
-            ) : (
-              <span className="project-detail__image-caption">
-                {project.imageCaption || `Screenshot of ${project.title}`}
-              </span>
-            )}
+            <img
+              src={project.image}
+              alt={project.imageCaption || project.title}
+            />
           </div>
         </div>
       )}
@@ -97,7 +98,9 @@ function ProjectDetail() {
                 <h2 className="project-detail__section-label">
                   {section.heading}
                 </h2>
-                <p className="project-detail__text">{section.body}</p>
+                {section.body.split('\n\n').map((paragraph, j) => (
+                  <p key={j} className="project-detail__text">{paragraph}</p>
+                ))}
               </section>
             ))}
 
@@ -133,20 +136,18 @@ function ProjectDetail() {
       {/* Divider */}
       <div className="project-detail__divider" />
 
-      {/* Next project */}
-      {next && (
-        <nav className="project-detail__next" aria-label="Next project">
-          <Link
-            to={`/lab/${next.slug}`}
-            className="project-detail__next-link"
-          >
-            <span className="project-detail__next-label">Next project</span>
-            <span className="project-detail__next-name">
-              {next.title} &rarr;
-            </span>
-          </Link>
-        </nav>
-      )}
+      {/* CTA */}
+      <div className="project-detail__cta">
+        <p className="project-detail__cta-text">Want to talk about a project like this?</p>
+        <a
+          href="https://cal.com/ayan-morshed/personal"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="project-detail__cta-link"
+        >
+          Book a call <span aria-hidden="true">&#8599;</span>
+        </a>
+      </div>
     </article>
   )
 }

@@ -1,4 +1,9 @@
 {
+  "redirects": [
+    { "source": "/lab", "destination": "/", "permanent": true },
+    { "source": "/lab/:slug", "destination": "/", "permanent": true },
+    { "source": "/vault", "destination": "/", "permanent": true }
+  ],
   "rewrites": [
     { "source": "/(.*)", "destination": "/index.html" }
   ]

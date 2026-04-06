@@ -109,4 +109,8 @@ h1, h2, h3 {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+
+  .timezone__colon {
+    animation: none;
+  }
 }

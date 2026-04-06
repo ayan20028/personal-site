@@ -13,7 +13,7 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 64px 0 48px;
+  padding: 32px 0 16px;
   gap: 0;
 }
 
@@ -36,9 +36,9 @@
   margin-bottom: 24px;
 }
 
-/* ── Sections ── */
+/* ── About ── */
 
-.section {
+.about {
   position: relative;
   padding: 40px 0;
   opacity: 0;
@@ -48,37 +48,12 @@
     transform 0.8s var(--ease-out-expo);
 }
 
-.section.is-visible {
+.about.is-visible {
   opacity: 1;
   transform: translateY(0);
 }
 
-/* Section spacing variation */
-.section + .section {
-  padding-top: 56px;
-}
-
-/* Section dividers */
-.section + .section::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 32px;
-  height: 1px;
-  background: var(--color-border);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 1s var(--ease-out-expo);
-}
-
-.section.is-visible + .section.is-visible::after,
-.section + .section.is-visible::after {
-  transform: scaleX(1);
-}
-
-/* Section labels */
-.section__label {
+.about__label {
   font-family: var(--font-mono);
   font-size: var(--text-xs);
   font-weight: 300;
@@ -88,155 +63,125 @@
   margin-bottom: var(--space-md);
 }
 
-.section__content {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-md);
-}
-
-.section__content p {
+.about__content p {
   font-size: var(--text-sm);
   color: var(--color-muted);
   line-height: var(--leading-normal);
 }
 
-.section__content p strong {
+.about__content p strong {
   font-weight: 600;
   color: var(--color-text);
 }
 
-/* ── Work Cards (stacked) ── */
+/* ── Hub Links ── */
 
-.work-cards {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-/* ── Link Cards (Currently section — filled bg) ── */
-
-.link-card {
-  display: flex;
-  align-items: flex-start;
-  gap: var(--space-md);
-  padding: var(--space-md);
-  background: var(--color-surface);
-  border: 1px solid transparent;
-  border-radius: var(--radius-md);
+.hub {
+  padding: 0 0 40px;
+  opacity: 0;
+  transform: translateY(20px);
   transition:
-    background-color 0.25s var(--ease-out-quart),
-    border-color 0.35s var(--ease-out-quart),
-    transform 0.4s var(--ease-out-expo);
+    opacity 0.8s var(--ease-out-expo),
+    transform 0.8s var(--ease-out-expo);
 }
 
-.link-card:hover {
-  background: var(--color-hover);
-  border-color: var(--color-border);
-  transform: translateY(-1px);
+.hub.is-visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
-.link-card__title {
-  font-family: var(--font-body);
-  font-size: var(--text-sm);
-  font-weight: 500;
-  color: var(--color-text);
-  margin-bottom: 4px;
-}
-
-.link-card__arrow {
-  display: inline-block;
-  color: var(--color-muted);
-  transition:
-    transform var(--duration-fast),
-    color var(--duration-fast);
-  transition-delay: 100ms;
-}
-
-.link-card:hover .link-card__arrow {
-  transform: translate(2px, -2px);
-  color: var(--color-text);
-}
-
-.link-card__desc {
-  font-size: var(--text-sm);
-  color: var(--color-muted);
-  line-height: var(--leading-snug);
-}
-
-/* ── Contact Links ── */
-
-.contact-actions {
+.hub__links {
   display: flex;
   flex-direction: column;
 }
 
-.contact-link {
+.hub__link {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  padding: 16px 0;
+  padding: 18px 0;
   border-bottom: 1px solid var(--color-border);
-  transition: transform var(--duration-medium) var(--ease-out-expo);
+  transition:
+    transform var(--duration-medium) var(--ease-out-expo),
+    color var(--duration-fast);
 }
 
-.contact-link:first-child {
+.hub__link:first-child {
   border-top: 1px solid var(--color-border);
 }
 
-.contact-link:hover {
+.hub__link:hover {
   transform: translateX(8px);
 }
 
-.contact-link__label {
+.hub__label {
   font-family: var(--font-mono);
   font-size: var(--text-xs);
   font-weight: 300;
   text-transform: uppercase;
   letter-spacing: var(--tracking-wide);
   color: var(--color-muted);
+  flex-shrink: 0;
 }
 
-.contact-link__value {
+.hub__value {
+  font-family: var(--font-body);
   font-size: var(--text-sm);
-  color: var(--color-text);
+  color: var(--color-muted);
+  text-align: right;
   transition: color var(--duration-fast);
 }
 
-.contact-link:hover .contact-link__value {
+.hub__link:hover .hub__value {
   color: var(--color-text);
 }
 
-.contact-link__value span {
+.hub__arrow {
   display: inline-block;
+  margin-left: 4px;
   transition: transform var(--duration-fast);
 }
 
-.contact-link:hover .contact-link__value span {
-  transform: translate(1px, -1px);
+.hub__link:hover .hub__arrow {
+  transform: translateX(3px);
 }
 
-/* ── Desktop: left-offset labels ── */
+.hub__link:hover .hub__arrow--external {
+  transform: translate(2px, -2px);
+}
+
+/* ── Featured Work highlight ── */
+
+.hub__link:first-child .hub__label {
+  color: var(--color-text);
+}
+
+.hub__link:first-child .hub__value {
+  font-weight: 500;
+}
+
+/* ── Desktop ── */
 
 @media (min-width: 810px) {
   .home {
-    max-width: 700px;
+    max-width: 640px;
   }
 
-  .section {
-    padding-left: 130px;
+  .hero {
+    padding: 48px 0 16px;
+  }
+}
+
+/* ── Mobile ── */
+
+@media (max-width: 480px) {
+  .hub__link {
+    flex-direction: column;
+    gap: 4px;
+    padding: 14px 0;
   }
 
-  .section__label {
-    position: absolute;
-    left: 0;
-    top: 48px;
-  }
-
-  .section + .section .section__label {
-    top: 64px;
-  }
-
-  .section + .section::after {
-    left: 130px;
+  .hub__value {
+    text-align: left;
   }
 }

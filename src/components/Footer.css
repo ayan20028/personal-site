@@ -1,6 +1,6 @@
 .footer {
   padding: var(--space-lg) var(--page-padding);
-  margin-top: var(--space-lg);
+  margin-top: var(--space-md);
   text-align: center;
   display: flex;
   flex-direction: column;

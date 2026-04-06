@@ -1,25 +1,21 @@
-import { Routes, Route, Navigate, useParams } from 'react-router'
+import { Routes, Route, Navigate } from 'react-router'
 import Layout from './components/Layout'
 import Home from './pages/Home'
-import Lab from './pages/Lab'
 import ProjectDetail from './pages/ProjectDetail'
-
-function RedirectToLab() {
-  const { slug } = useParams()
-  return <Navigate to={`/lab/${slug}`} replace />
-}
 
 function App() {
   return (
     <Routes>
       <Route element={<Layout />}>
         <Route index element={<Home />} />
-        <Route path="lab" element={<Lab />} />
-        <Route path="lab/:slug" element={<ProjectDetail />} />
+        <Route path="work/:slug" element={<ProjectDetail />} />
 
-        {/* Redirects from old URLs */}
-        <Route path="vault" element={<Navigate to="/lab" replace />} />
-        <Route path="work/:slug" element={<RedirectToLab />} />
+        {/* Redirects: old URLs → home */}
+        <Route path="lab" element={<Navigate to="/" replace />} />
+        <Route path="lab/*" element={<Navigate to="/" replace />} />
+        <Route path="vault" element={<Navigate to="/" replace />} />
+        <Route path="work/*" element={<Navigate to="/" replace />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Route>
     </Routes>
   )
