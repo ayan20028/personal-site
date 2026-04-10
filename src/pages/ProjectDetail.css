@@ -45,7 +45,7 @@
 .project-detail__header {
   max-width: var(--content-max);
   margin: 0 auto;
-  padding: var(--space-xl) var(--page-padding) var(--space-lg);
+  padding: var(--space-md) var(--page-padding) var(--space-lg);
 }
 
 .project-detail__category {

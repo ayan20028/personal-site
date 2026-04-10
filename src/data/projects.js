@@ -15,7 +15,7 @@ export const projects = [
     subtitle:
       'A staffing intake portal that replaced scattered email workflows with structured forms, automated approvals, and real-time tracking for 200+ managers at a Fortune 50 bank.',
     timeline: '2025',
-    role: 'Senior Consultant \u2014 Solo designer & builder',
+    role: 'Senior Consultant \u2014 designer & builder',
     sections: [
       {
         heading: 'Problem',
