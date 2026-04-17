@@ -1,6 +1,7 @@
 export const STATUS_CONFIG = {
   shipped: { label: 'Shipped', color: '#3D6B3D' },
   internal: { label: 'Internal Build', color: '#5C5A57' },
+  live: { label: 'Live', color: '#4A6FA5' },
 }
 
 export const projects = [
@@ -172,6 +173,121 @@ export const projects = [
       },
     ],
     reflection: 'Automation that works technically but ignores the human using it gets turned off within a week. The hard part of building these systems isn\'t the wiring — it\'s deciding which decisions the AI gets to make and which ones stay with the person whose name is on the business.\n\nThis project taught me to start every automation build from the same question: what\'s the smallest, safest way for this person to test whether the system works — without risking the relationships that matter to them? The answer shapes everything downstream: the trigger, the data model, the failure modes, the final step. Design the human\'s experience first. The pipeline is just plumbing.',
+    image: null,
+    imageCaption: null,
+  },
+  {
+    slug: 'notion-back-office',
+    title: 'Notion Back Office for a DP',
+    category: 'Systems design',
+    status: 'live',
+    featured: false,
+    description:
+      'A relational Notion system for a working Director of Photography — built to replace the spreadsheet tangle that made tax season painful, and to answer the questions a creative career actually asks of its own data.',
+    tools: ['Miro', 'Claude', 'Notion'],
+    subtitle:
+      'A relational Notion system that replaced spreadsheets with structure — so a freelance DP can answer his own business questions without manual cross-referencing.',
+    timeline: '2026',
+    role: 'Solo build, collaborative refinement',
+    sections: [
+      {
+        heading: 'Problem',
+        body: 'The subject is a freelance Director of Photography — a longtime creative collaborator of mine; we co-directed the Warner Music Japan billboard campaign together in Tokyo. His day-to-day work is the kind that looks glamorous from the outside and generates a lot of quiet administrative debt from the inside. Every shoot is a separate engagement, with a different client, a different rate, different gear in play, and a different tax form at the end of the year.\n\nFor a while he tracked all of it in spreadsheets — a career sheet mixing expenses and tax categories, a collaboration log color-coded by month, yearly work tracking sheets with pay and tax calculations. Different structures, overlapping data, no relationships between them. It worked — right up until it didn\'t. Tax season turned into an archaeological dig: cross-referencing dates across sheets, reconciling rows that described the same job in different formats, trying to reconstruct which gear went out on which shoot in February.\n\nThe pain wasn\'t the data entry. It was that the data had no shape.',
+      },
+      {
+        heading: 'Approach',
+        body: 'Flat spreadsheets force you to describe everything as a single wide row. But a film career isn\'t actually that shape. A client is one kind of thing. A job is another. A piece of equipment is a third. And when a piece of gear goes out on a shoot, that\'s a fourth kind of thing — a rental event that connects a job to a piece of equipment.\n\nThose four entities have their own identities, their own attributes, and their own lives. The spreadsheet was forcing them all into one plane when they really wanted to be four tables with well-defined relationships between them.\n\nPhase 1 — Model on paper (well, on Miro). Before opening Notion, I sketched the relational model in Miro, using its AI feature to help generate the initial entity-relationship diagram. Getting the shape right first matters more than any tool choice downstream.\n\nPhase 2 — Build with Claude. Once the model was locked, I handed the diagram to Claude and worked through the Notion build collaboratively — defining each database\'s properties, setting up the relations between them, and writing the rollups and formulas that derive values like Payoff % and Net Pay. Using AI for the build phase compressed what would have been a week of clicking around Notion into a few hours of decisions.\n\nPhase 3 — Iterate with the user. I handed over a working copy for him to duplicate into his own workspace, then joined as a collaborator. From there, changes came from real use: columns added because he actually needed them, views renamed because the original labels didn\'t match how he thought, summaries restructured because the first version showed the wrong totals. The initial build was 80% of the way there; the last 20% only came from putting it in front of him.\n\nThe principle underneath those three phases: design the system on paper, accelerate the build with AI, and let the final shape emerge from how someone actually uses it.',
+      },
+      {
+        type: 'steps',
+        heading: 'The Four Databases',
+        steps: [
+          {
+            title: 'Jobs & Rentals',
+            description: 'The main table and the only one that requires regular input. Every shoot or gear rental is a row. Properties include shoot dates, location, job type, project type, day rate, tax form type, status, and linked relations to the client and any equipment used. This is where ~90% of the data entry happens; everything else is derived.',
+          },
+          {
+            title: 'Clients',
+            description: 'Production companies and individual creatives he works with. Each client has contact info and an automatic rollup of every job he\'s done with them. Opening a client record shows his full history with that person at a glance.',
+          },
+          {
+            title: 'Equipment',
+            description: 'His gear inventory: cameras, lenses, monitors, tripods, support. Each record tracks purchase date, purchase price, condition, serial number, and — critically — a rollup of every rental it\'s been attached to. From that rollup, a formula calculates Payoff % (total rental revenue \u00F7 purchase price) and Times Used.',
+          },
+          {
+            title: 'Equipment Rentals',
+            description: 'The join table. Each row represents one piece of gear going out on one job, with a rental rate and date range. This is the table that connects gear to work, and lets the system answer questions like "how much has the Alexa Mini earned back?" without any manual math.',
+          },
+        ],
+      },
+      {
+        type: 'decisions',
+        heading: 'What the System Answers',
+        decisions: [
+          {
+            label: 'Income',
+            question: '"How much did I make last month?"',
+            answer: 'A saved view on the Jobs table, filtered by shoot date, summed.',
+            prefix: 'View',
+          },
+          {
+            label: 'Forecast',
+            question: '"How much am I projected to make this quarter?"',
+            answer: 'Same table, filtered to jobs with status = Scheduled or In Progress.',
+            prefix: 'View',
+          },
+          {
+            label: 'Receivables',
+            question: '"How much is pending payment?"',
+            answer: 'Jobs where work is complete but status \u2260 Paid.',
+            prefix: 'View',
+          },
+          {
+            label: 'ROI',
+            question: '"Has this camera paid for itself?"',
+            answer: 'A formula on the Equipment table: total rental revenue \u00F7 purchase price. Crosses 100% when the gear has earned back what it cost.',
+            prefix: 'Formula',
+          },
+          {
+            label: 'Tax prep',
+            question: '"What\'s my taxable income this year, by form type?"',
+            answer: 'Grouped by Tax Form Type (W-9, 1099, etc.) with a rollup sum.',
+            prefix: 'View',
+          },
+        ],
+      },
+      {
+        type: 'decisions',
+        heading: 'Design Decisions',
+        decisions: [
+          {
+            label: 'Entry surface',
+            title: 'Jobs as the primary data-entry surface',
+            body: 'Most freelancers think in terms of jobs first — that\'s the unit of their week. I made Jobs the one table he has to fill out in detail; everything else (clients, equipment usage, earnings totals) gets derived or surfaced through relations. Minimum input, maximum output.',
+            prefix: false,
+          },
+          {
+            label: 'Gear economics',
+            title: 'Purchase price + rental revenue on every gear record',
+            body: 'Most gear spreadsheets track either what things cost or what they earned, not both at the same item level. Combining them creates a single, honest metric — Payoff % — that tells him immediately which investments have returned their cost and which haven\'t. This changes future purchasing decisions in a way a generic expense tracker never would.',
+            prefix: false,
+          },
+          {
+            label: 'Tax readiness',
+            title: 'Tax form type as a first-class property on every job',
+            body: 'Freelancers deal with a mess of W-9, 1099, and foreign-sourced income. Tagging the form type on each job at creation time (rather than reconstructing it in January) turns tax prep from a scavenger hunt into a filter.',
+            prefix: false,
+          },
+          {
+            label: 'Views',
+            title: 'Multiple views over one source of truth',
+            body: 'Default view, This Year, Month-in-Review chart, Calendar. All four read from the same underlying data — no duplicate entry, no reconciliation required.',
+            prefix: false,
+          },
+        ],
+      },
+    ],
+    reflection: 'Most of what people call "getting organized" is really a modeling problem wearing an organizational disguise. Before you pick a tool or design a layout, you have to ask what the actual things are and how they relate. A freelance career isn\'t one flat list of entries. It\'s clients and jobs and gear and rentals, each with its own life, each connected to the others in specific ways.\n\nOnce you see that, the tool choice gets easier. Notion, Airtable, a Postgres database, a custom app — they\'re all just surfaces over the same underlying model. Pick the one that matches the person using it, and move on.\n\nThe method generalizes: model on paper, build with AI, iterate with the user. It works for a DP\'s back office. It works for an operations system at a small RIA. It works for any situation where the right answer isn\'t a new tool — it\'s a clearer picture of the work.\n\nThe principle: the shape of your system should match the shape of your life. Most tools fight that; relational models let you fit it.',
     image: null,
     imageCaption: null,
   },

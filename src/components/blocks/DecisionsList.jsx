@@ -10,10 +10,15 @@ function DecisionsList({ heading, decisions }) {
             <span className="decisions-list__number">
               {String(i + 1).padStart(2, '0')} · {d.label}
             </span>
-            <h3 className="decisions-list__question">{d.question}</h3>
-            <p className="decisions-list__answer">
-              <strong>Design answer:</strong> {d.answer}
-            </p>
+            <h3 className="decisions-list__question">{d.title || d.question}</h3>
+            {(d.answer || d.body) && (
+              <p className="decisions-list__answer">
+                {d.prefix !== false && (
+                  <><strong>{d.prefix ?? 'Design answer'}:</strong>{' '}</>
+                )}
+                {d.answer || d.body}
+              </p>
+            )}
           </li>
         ))}
       </ul>
