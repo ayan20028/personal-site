@@ -2,9 +2,9 @@ import { useState, useEffect } from 'react'
 import './TimeZoneDisplay.css'
 
 const cities = [
-  { name: 'Tokyo', timezone: 'Asia/Tokyo' },
-  { name: 'Dhaka', timezone: 'Asia/Dhaka' },
-  { name: 'Charlotte', timezone: 'America/New_York' },
+  { name: 'Tokyo', abbr: 'TYO', timezone: 'Asia/Tokyo' },
+  { name: 'Dhaka', abbr: 'DHK', timezone: 'Asia/Dhaka' },
+  { name: 'Charlotte', abbr: 'CLT', timezone: 'America/New_York' },
 ]
 
 function formatTimeParts(timezone) {
@@ -43,7 +43,16 @@ function isSleeping(timezone) {
   return hour >= 23 || hour < 6
 }
 
-function TimeZoneDisplay() {
+function formatTimeShort(timezone) {
+  return new Intl.DateTimeFormat('en-US', {
+    hour: '2-digit',
+    minute: '2-digit',
+    hour12: false,
+    timeZone: timezone,
+  }).format(new Date())
+}
+
+function TimeZoneDisplay({ compact = false }) {
   const [times, setTimes] = useState(() =>
     cities.map((c) => ({
       ...c,
@@ -67,6 +76,19 @@ function TimeZoneDisplay() {
     }, 1000)
     return () => clearInterval(interval)
   }, [])
+
+  if (compact) {
+    return (
+      <div className="timezone-compact" role="complementary" aria-label="Current times">
+        {times.map((city, i) => (
+          <span key={city.name} className={`timezone-compact__item ${city.sleeping ? 'timezone-compact__item--sleeping' : ''}`}>
+            {i > 0 && <span className="timezone-compact__dot"> · </span>}
+            {city.abbr} {formatTimeShort(city.timezone)}
+          </span>
+        ))}
+      </div>
+    )
+  }
 
   return (
     <div className="timezone" role="complementary" aria-label="Current times">

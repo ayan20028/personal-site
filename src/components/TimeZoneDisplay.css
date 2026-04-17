@@ -92,3 +92,22 @@
     font-size: var(--text-xs);
   }
 }
+
+/* ── Compact mode (footer) ── */
+
+.timezone-compact {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 300;
+  color: var(--color-muted);
+  letter-spacing: var(--tracking-wide);
+  opacity: 0.6;
+}
+
+.timezone-compact__item--sleeping {
+  opacity: 0.4;
+}
+
+.timezone-compact__dot {
+  opacity: 0.4;
+}
