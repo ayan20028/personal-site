@@ -6,6 +6,7 @@ import TextSection from '../components/blocks/TextSection'
 import PipelineDiagram from '../components/blocks/PipelineDiagram'
 import StepsList from '../components/blocks/StepsList'
 import OutcomesGrid from '../components/blocks/OutcomesGrid'
+import DecisionsList from '../components/blocks/DecisionsList'
 import './ProjectDetail.css'
 
 function ProjectDetail() {
@@ -106,6 +107,8 @@ function ProjectDetail() {
                   return <StepsList key={i} {...section} />
                 case 'outcomes':
                   return <OutcomesGrid key={i} {...section} />
+                case 'decisions':
+                  return <DecisionsList key={i} {...section} />
                 default:
                   return <TextSection key={i} {...section} />
               }

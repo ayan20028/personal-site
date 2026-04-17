@@ -25,3 +25,13 @@
 .text-section__text + .text-section__text {
   margin-top: var(--space-sm);
 }
+
+.text-section__callout {
+  margin-top: var(--space-md);
+  padding-left: var(--space-md);
+  border-left: 2px solid var(--color-border);
+  font-size: var(--text-base);
+  font-style: italic;
+  line-height: var(--leading-normal);
+  color: var(--color-muted);
+}
