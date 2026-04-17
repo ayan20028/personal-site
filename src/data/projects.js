@@ -1,5 +1,6 @@
 export const STATUS_CONFIG = {
   shipped: { label: 'Shipped', color: '#3D6B3D' },
+  internal: { label: 'Internal Build', color: '#5C5A57' },
 }
 
 export const projects = [
@@ -40,7 +41,69 @@ export const projects = [
     ],
     reflection: 'This was the project that taught me the difference between building something that works and building something people actually adopt. The technical build was one challenge. Convincing an entire division to change how they\u2019d been working for years was a different kind of problem entirely.',
     image: '/images/workforce-portal-diagram.png',
-    imageCaption: 'System architecture — intake forms, approval workflows, and routing logic',
+    imageCaption: 'System architecture \u2014 intake forms, approval workflows, and routing logic',
+  },
+  {
+    slug: 'lead-enrichment-system',
+    title: 'Lead Enrichment System',
+    category: 'AI automation',
+    status: 'internal',
+    featured: false,
+    description:
+      'An automation that turns a raw lead list into a researched, personalized prospect file \u2014 in minutes instead of days. Built for Akashi Labs as an internal demo targeting branding agencies.',
+    tools: ['Make.com', 'Google Sheets', 'Perplexity AI', 'Anthropic Claude', 'Apify', 'Apollo.io'],
+    subtitle:
+      'An automation that researches 500 leads the way a human would \u2014 just faster.',
+    timeline: '2025',
+    role: 'Built solo \u2014 Akashi Labs',
+    sections: [
+      {
+        heading: 'Problem',
+        body: 'Sales teams sit on lead lists with hundreds of qualified prospects and almost no time to research any of them properly. The trade-off is predictable: either you send generic outreach that gets ignored, or you spend thirty minutes per lead digging through websites and LinkedIn to write something that actually sounds like a human wrote it.\n\nAt 500 leads, that\u2019s 250 hours. Nobody does that. So most cold email ends up generic, and most generic cold email gets deleted.',
+      },
+      {
+        heading: 'Approach',
+        body: 'Instead of asking one tool to do everything, I chained three tools together \u2014 each doing what it\u2019s best at. A spreadsheet holds the data. Perplexity does the web research. Claude writes the personalization. Make orchestrates the flow.\n\nThe lead list for this demo was scraped from Apollo.io using an Apify scraper, filtered for keywords like branding, design, CEO, and founder. Each row has a name, company, email, and website \u2014 the raw material.',
+      },
+      {
+        type: 'pipeline',
+        heading: 'Pipeline',
+        nodes: [
+          { name: 'Google Sheets', action: 'Read row' },
+          { name: 'Perplexity', action: 'Research prospect' },
+          { name: 'Claude', action: 'Write icebreaker' },
+          { name: 'Google Sheets', action: 'Write back' },
+        ],
+      },
+      {
+        type: 'steps',
+        heading: 'How It Works',
+        steps: [
+          { title: 'Read the row', description: 'Make pulls the next unenriched row from Google Sheets on a schedule.' },
+          { title: 'Filter out the broken ones', description: 'If there\u2019s no email or no website, skip the row. Email is needed to send; website is needed for Perplexity to actually have something to research.' },
+          { title: 'Research with Perplexity', description: 'The company name and website go to Perplexity with a prompt like: \u201cWhat clients has this company worked with?\u201d Perplexity returns a summary \u2014 often surfacing things buried deep in the site that a human scanning a homepage would miss.' },
+          { title: 'Generate the icebreaker with Claude', description: 'The research gets passed to Claude, which turns it into a single personalized opening line \u2014 something like \u201cLoved your team\u2019s work on the Megan Thee Stallion Mamushi music video.\u201d' },
+          { title: 'Write back to Sheets', description: 'The icebreaker lands in a dedicated column, ready for the email campaign tool to pick up.' },
+        ],
+      },
+      {
+        heading: 'Design Choice',
+        body: 'Most LLMs can do web search now. But at the time I built this, Perplexity consistently returned better sources \u2014 its \u201canswer engine\u201d approach surfaced more relevant primary material than the alternatives. Claude, on the other hand, is a stronger writer: given good research, it produces cleaner, more natural-sounding text than models optimized for retrieval.\n\nChain specialists. Don\u2019t ask one tool to do the whole job badly when two tools can each do half of it well.',
+      },
+      {
+        type: 'outcomes',
+        heading: 'Outcome',
+        metrics: [
+          { value: '~30s', label: 'Per lead, end to end' },
+          { value: '500+', label: 'Prospects enriched, unattended' },
+          { value: '3', label: 'Tools chained together' },
+          { value: '0', label: 'Hours of manual research after setup' },
+        ],
+      },
+    ],
+    reflection: 'The icebreakers worked, but a lot of them still sounded like AI wrote them \u2014 the giveaway phrases, the over-smooth transitions, the mild overuse of \u201cI noticed\u201d and \u201cI saw.\u201d Enrichment at scale is solved; voice at scale isn\u2019t. A next version would invest more in the prompt craft: feeding Claude examples of actual writing, constraining sentence structure, and adding a quality gate that flags generic-sounding output for manual review before anything gets sent.\n\nThe lesson generalizes: any bulk research task \u2014 competitive intelligence, investor prep, account research for a meeting \u2014 works the same way. A lead list is just one shape of the problem.',
+    image: null,
+    imageCaption: null,
   },
 ]
 

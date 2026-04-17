@@ -30,6 +30,12 @@ function Nav() {
         </Link>
 
         <nav className="nav__links" aria-label="Main navigation">
+          <Link
+            to="/work"
+            className={`nav__link ${location.pathname.startsWith('/work') ? 'nav__link--active' : ''}`}
+          >
+            Work
+          </Link>
           <a
             href="https://ayanmorshed.substack.com"
             target="_blank"

@@ -1,0 +1,27 @@
+.text-section {
+  padding: var(--space-lg) 0;
+}
+
+.text-section + .text-section {
+  border-top: 1px solid var(--color-border);
+}
+
+.text-section__label {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  font-weight: 300;
+  color: var(--color-muted);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  margin-bottom: var(--space-md);
+}
+
+.text-section__text {
+  font-size: var(--text-base);
+  color: var(--color-text);
+  line-height: var(--leading-normal);
+}
+
+.text-section__text + .text-section__text {
+  margin-top: var(--space-sm);
+}

@@ -2,6 +2,10 @@ import { useParams, Link } from 'react-router'
 import { useEffect } from 'react'
 import { getProject } from '../data/projects'
 import StatusTag from '../components/StatusTag'
+import TextSection from '../components/blocks/TextSection'
+import PipelineDiagram from '../components/blocks/PipelineDiagram'
+import StepsList from '../components/blocks/StepsList'
+import OutcomesGrid from '../components/blocks/OutcomesGrid'
 import './ProjectDetail.css'
 
 function ProjectDetail() {
@@ -9,6 +13,7 @@ function ProjectDetail() {
   const project = getProject(slug)
 
   useEffect(() => {
+    window.scrollTo(0, 0)
     if (project) {
       document.title = `${project.title} — Ayan Morshed`
     }
@@ -19,7 +24,7 @@ function ProjectDetail() {
     return (
       <div className="project-detail project-detail--not-found">
         <h1>Project not found</h1>
-        <Link to="/">Back</Link>
+        <Link to="/work">Back</Link>
       </div>
     )
   }
@@ -30,7 +35,7 @@ function ProjectDetail() {
     <article className="project-detail">
       {/* Back link */}
       <div className="project-detail__back-wrapper">
-        <Link to="/" className="project-detail__back">
+        <Link to="/work" className="project-detail__back">
           &larr; Back
         </Link>
       </div>
@@ -93,26 +98,24 @@ function ProjectDetail() {
       <div className="project-detail__body">
         {isDetailed ? (
           <>
-            {project.sections.map((section, i) => (
-              <section key={i} className="project-detail__section">
-                <h2 className="project-detail__section-label">
-                  {section.heading}
-                </h2>
-                {section.body.split('\n\n').map((paragraph, j) => (
-                  <p key={j} className="project-detail__text">{paragraph}</p>
-                ))}
-              </section>
-            ))}
+            {project.sections.map((section, i) => {
+              switch (section.type) {
+                case 'pipeline':
+                  return <PipelineDiagram key={i} {...section} />
+                case 'steps':
+                  return <StepsList key={i} {...section} />
+                case 'outcomes':
+                  return <OutcomesGrid key={i} {...section} />
+                default:
+                  return <TextSection key={i} {...section} />
+              }
+            })}
 
             {project.reflection && (
-              <section className="project-detail__section project-detail__section--reflection">
-                <h2 className="project-detail__section-label">
-                  What I&rsquo;d change
-                </h2>
-                <p className="project-detail__text project-detail__text--italic">
-                  {project.reflection}
-                </p>
-              </section>
+              <TextSection
+                heading="What I'd change"
+                body={project.reflection}
+              />
             )}
           </>
         ) : (

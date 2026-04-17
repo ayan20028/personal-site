@@ -1,11 +1,11 @@
 :root {
-  /* ── Palette: Monochrome + Subtle Warmth ── */
-  --color-bg: #FAFAF8;
-  --color-text: #1C1B1A;
-  --color-muted: #5C5A57;
-  --color-surface: #F5F4F2;
-  --color-border: #E8E6E3;
-  --color-hover: #F0EFED;
+  /* ── Palette: Notion-inspired clean neutrals ── */
+  --color-bg: #FFFFFF;
+  --color-text: #191919;
+  --color-muted: #787774;
+  --color-surface: #F7F6F3;
+  --color-border: #E3E2E0;
+  --color-hover: #EFEFEF;
 
   /* ── Typography ── */
   --font-body: 'Instrument Sans', -apple-system, BlinkMacSystemFont, sans-serif;

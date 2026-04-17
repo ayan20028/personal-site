@@ -50,9 +50,16 @@ function Home() {
       <section className="hub" data-reveal>
         <div className="hub__links">
           <Link to="/work/workforce-management-portal" className="hub__link">
-            <span className="hub__label">Featured Work</span>
+            <span className="hub__label">Featured</span>
             <span className="hub__value">
               Workforce Management Portal <span className="hub__arrow" aria-hidden="true">&rarr;</span>
+            </span>
+          </Link>
+
+          <Link to="/work" className="hub__link">
+            <span className="hub__label">All Work</span>
+            <span className="hub__value">
+              View all projects <span className="hub__arrow" aria-hidden="true">&rarr;</span>
             </span>
           </Link>
 

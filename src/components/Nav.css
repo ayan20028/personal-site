@@ -60,6 +60,10 @@
   color: var(--color-text);
 }
 
+.nav__link--active {
+  color: var(--color-text);
+}
+
 .nav__link--external span {
   display: inline-block;
   transition: transform var(--duration-fast);
