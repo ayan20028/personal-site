@@ -1,5 +1,5 @@
 import { Link } from 'react-router'
-import NameCycler from '../components/NameCycler'
+import Typewriter from '../components/Typewriter'
 import SocialLinks from '../components/SocialLinks'
 import useScrollReveal from '../hooks/useScrollReveal'
 import './Home.css'
@@ -13,7 +13,13 @@ function Home() {
         {/* ── Identity (left column on desktop) ── */}
         <section className="home__identity">
           <h1 className="sr-only">Ayan Morshed</h1>
-          <NameCycler />
+          <Typewriter
+            words={['Ayan Morshed', 'アヤン・モルシェド', 'আয়ান মোর্শেদ']}
+            speed={80}
+            delayBetweenWords={2000}
+            cursor={true}
+            cursorChar="|"
+          />
 
           <p className="hero__tagline">
             Systems Designer / Human-Centered AI
