@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 300" fill="none">
+  <defs>
+    <marker id="arrow" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L6,3 z" fill="#C8C5C0" />
+    </marker>
+  </defs>
+
+  <style>
+    .box { fill: #FFFFFF; stroke: #D6D4D0; stroke-width: 1; }
+    .label { font-family: 'Instrument Sans', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 13px; font-weight: 600; fill: #191919; letter-spacing: 0.02em; }
+    .sub { font-family: 'DM Mono', 'SF Mono', Consolas, monospace; font-size: 8.5px; fill: #787774; letter-spacing: 0.04em; }
+    .line { stroke: #C8C5C0; stroke-width: 1; }
+    .relation { font-family: 'DM Mono', 'SF Mono', Consolas, monospace; font-size: 8.5px; fill: #9E9B97; letter-spacing: 0.03em; }
+  </style>
+
+  <!-- CLIENTS -->
+  <rect class="box" x="60" y="24" width="160" height="50" rx="4" />
+  <text class="label" x="140" y="46" text-anchor="middle">Clients</text>
+  <text class="sub" x="140" y="62" text-anchor="middle">CONTACTS + HISTORY</text>
+
+  <!-- JOBS -->
+  <rect class="box" x="60" y="130" width="160" height="50" rx="4" />
+  <text class="label" x="140" y="152" text-anchor="middle">Jobs &amp; Rentals</text>
+  <text class="sub" x="140" y="168" text-anchor="middle">PRIMARY DATA ENTRY</text>
+
+  <!-- INVOICES -->
+  <rect class="box" x="60" y="236" width="160" height="50" rx="4" />
+  <text class="label" x="140" y="258" text-anchor="middle">Invoices</text>
+  <text class="sub" x="140" y="274" text-anchor="middle">BILLING + PAYMENT</text>
+
+  <!-- EQUIPMENT -->
+  <rect class="box" x="460" y="24" width="160" height="50" rx="4" />
+  <text class="label" x="540" y="46" text-anchor="middle">Equipment</text>
+  <text class="sub" x="540" y="62" text-anchor="middle">GEAR + PAYOFF %</text>
+
+  <!-- EQUIPMENT RENTALS -->
+  <rect class="box" x="460" y="130" width="160" height="50" rx="4" />
+  <text class="label" x="540" y="152" text-anchor="middle">Equipment Rentals</text>
+  <text class="sub" x="540" y="168" text-anchor="middle">JOIN TABLE</text>
+
+  <!-- Clients → Jobs -->
+  <line class="line" x1="140" y1="74" x2="140" y2="124" marker-end="url(#arrow)" />
+  <text class="relation" x="150" y="104">has</text>
+
+  <!-- Jobs → Invoices -->
+  <line class="line" x1="140" y1="180" x2="140" y2="230" marker-end="url(#arrow)" />
+  <text class="relation" x="150" y="210">generates</text>
+
+  <!-- Jobs → Equipment Rentals -->
+  <line class="line" x1="220" y1="155" x2="454" y2="155" marker-end="url(#arrow)" />
+  <text class="relation" x="320" y="147">includes</text>
+
+  <!-- Equipment → Equipment Rentals -->
+  <line class="line" x1="540" y1="74" x2="540" y2="124" marker-end="url(#arrow)" />
+  <text class="relation" x="550" y="104">rents out</text>
+</svg>

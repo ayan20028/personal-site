@@ -180,7 +180,7 @@ export const projects = [
     slug: 'notion-back-office',
     title: 'Notion Back Office for a DP',
     category: 'Systems design',
-    status: 'live',
+    status: 'shipped',
     featured: false,
     description:
       'A relational Notion system for a working Director of Photography — built to replace the spreadsheet tangle that made tax season painful, and to answer the questions a creative career actually asks of its own data.',
@@ -288,8 +288,8 @@ export const projects = [
       },
     ],
     reflection: 'Most of what people call "getting organized" is really a modeling problem wearing an organizational disguise. Before you pick a tool or design a layout, you have to ask what the actual things are and how they relate. A freelance career isn\'t one flat list of entries. It\'s clients and jobs and gear and rentals, each with its own life, each connected to the others in specific ways.\n\nOnce you see that, the tool choice gets easier. Notion, Airtable, a Postgres database, a custom app — they\'re all just surfaces over the same underlying model. Pick the one that matches the person using it, and move on.\n\nThe method generalizes: model on paper, build with AI, iterate with the user. It works for a DP\'s back office. It works for an operations system at a small RIA. It works for any situation where the right answer isn\'t a new tool — it\'s a clearer picture of the work.\n\nThe principle: the shape of your system should match the shape of your life. Most tools fight that; relational models let you fit it.',
-    image: null,
-    imageCaption: null,
+    image: '/images/notion-er-diagram.svg',
+    imageCaption: 'Relational model — five databases and their relationships',
   },
 ]
 
