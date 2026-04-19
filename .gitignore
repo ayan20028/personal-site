@@ -22,3 +22,13 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Claude Code local config
+.claude/
+
+# Local scratch / drafts (not used by the site)
+/case-study-*.md
+/case-study-*.html
+/portfolio_project_basics.md
+/diagram.tldr
+/workforce-portal-diagram.png

@@ -206,16 +206,6 @@
     max-width: none;
   }
 
-  /* Left-align the NameCycler on desktop */
-  .home__identity .name-cycler {
-    justify-content: flex-start;
-  }
-
-  .home__identity .name-cycler__text {
-    text-align: left;
-    white-space: nowrap;
-  }
-
   /* Left-align social links */
   .home__identity .socials {
     justify-content: flex-start;

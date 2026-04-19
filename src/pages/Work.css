@@ -3,7 +3,7 @@
 .work-page {
   max-width: 560px;
   margin: 0 auto;
-  padding: calc(var(--nav-height) + var(--space-lg)) var(--page-padding) var(--space-xl);
+  padding: var(--space-sm) var(--page-padding) var(--space-xl);
 }
 
 .work-page__header {

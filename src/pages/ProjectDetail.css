@@ -21,31 +21,11 @@
   color: var(--color-text);
 }
 
-/* Back link */
-.project-detail__back-wrapper {
-  max-width: var(--content-max);
-  margin: 0 auto;
-  padding: calc(var(--nav-height) + var(--space-md)) var(--page-padding) 0;
-}
-
-.project-detail__back {
-  font-family: var(--font-mono);
-  font-size: var(--text-sm);
-  font-weight: 400;
-  color: var(--color-muted);
-  letter-spacing: var(--tracking-wide);
-  transition: color var(--duration-fast);
-}
-
-.project-detail__back:hover {
-  color: var(--color-text);
-}
-
 /* Header */
 .project-detail__header {
   max-width: var(--content-max);
   margin: 0 auto;
-  padding: var(--space-md) var(--page-padding) var(--space-lg);
+  padding: var(--space-sm) var(--page-padding) var(--space-lg);
 }
 
 .project-detail__category {

@@ -34,13 +34,6 @@ function ProjectDetail() {
 
   return (
     <article className="project-detail">
-      {/* Back link */}
-      <div className="project-detail__back-wrapper">
-        <Link to="/work" className="project-detail__back">
-          &larr; Back
-        </Link>
-      </div>
-
       {/* Header */}
       <header className="project-detail__header">
         <span className="project-detail__category">{project.category}</span>
