@@ -24,7 +24,6 @@ function Footer() {
           Book a Call <span aria-hidden="true">&#8599;</span>
         </a>
       </div>
-      <p className="footer__tagline">design / systems</p>
       <p className="footer__text">Ayan Morshed &copy; {new Date().getFullYear()}</p>
     </footer>
   )
