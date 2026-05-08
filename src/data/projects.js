@@ -45,6 +45,46 @@ export const projects = [
     imageCaption: 'System architecture \u2014 intake forms, approval workflows, and routing logic',
   },
   {
+    slug: 'org-chart-generator',
+    title: 'Org Chart Generator',
+    category: 'Process design',
+    status: 'shipped',
+    featured: false,
+    description:
+      'A VBA automation that replaced a manual, multi-day rebuild of the department\u2019s org chart with a near-real-time generator one person can run in minutes. Built solo at a Fortune 50 bank.',
+    tools: ['Microsoft Copilot', 'VBA', 'PowerPoint SmartArt', 'Excel'],
+    subtitle:
+      'A VBA automation that turned a week of org-chart rebuilding by a team into a few minutes for one person.',
+    timeline: '2025',
+    role: 'Senior Consultant (built solo)',
+    sections: [
+      {
+        heading: 'Problem',
+        body: 'The department had thousands of employees and an org structure that shifted every week. Keeping the chart current meant a team of people manually retyping names and titles into PowerPoint SmartArt: multiple days of work per cycle, outdated by the time it shipped. Painful, error-prone, and nobody wanted to own it.\n\nWorkday could auto-generate a version, but it didn\u2019t give leaders the format they needed. It also didn\u2019t track the nuances the department cared about, and it didn\u2019t let them shift boxes around to model scenarios. So the team kept rebuilding the chart from scratch in PowerPoint.',
+      },
+      {
+        heading: 'Approach',
+        body: 'Processes like these, you know in your gut that there has to be a better way. I tried Visio first - it was faster than SmartArt by hand, but still too rigid; the format leaders wanted wasn\u2019t something Visio was generating (maybe I just didn\u2019t know how to use the tool properly).\n\nSo then I tried something else. I used Copilot to help me write VBA that reads our internal data export and generates the full org chart directly into PowerPoint SmartArt. The output came out in the format leaders actually use, with the extra fields Workday didn\u2019t capture, and current to the most recent data pull.',
+      },
+      {
+        type: 'outcomes',
+        heading: 'Outcome',
+        metrics: [
+          { value: '5 days \u2192 15 min', label: 'End-to-end rebuild time' },
+          { value: 'Multiple \u2192 one', label: 'Headcount needed' },
+          { value: 'Near-real-time', label: 'Data freshness vs. weeks-old before' },
+          { value: '0', label: 'Manual retyping after setup' },
+        ],
+      },
+      {
+        heading: 'Key Takeaways',
+        body: 'VBA has existed for decades and it could have solved this problem the entire time. But useful VBA required an expert, and not every team has access to one. Pulling in help for something that didn\u2019t seem like a top priority was never going to happen.\n\nThe interesting shift wasn\u2019t that AI replaced the work. It was that AI lowered the knowledge barrier to a tool that was already sitting there. The "AI solution" doesn\u2019t need to have AI running inside the system. Sometimes it can just help you build the system using tools you didn\u2019t know how to use before.',
+      },
+    ],
+    image: null,
+    imageCaption: null,
+  },
+  {
     slug: 'lead-enrichment-system',
     title: 'Lead Enrichment System',
     category: 'AI automation',
